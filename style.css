@@ -180,6 +180,10 @@ main{
         font-size: 20px;
     }
 
+    h1{
+        font-size: 5vh;
+    }
+
     main {
         min-width: 325px;
         width: 325px;
