@@ -177,17 +177,18 @@ main{
 
 @media screen and (max-width: 800px) {
     *{
-        font-size: 25px;
+        font-size: 20px;
     }
 
     main {
-        min-width: 350px;
-        width: 350px;
+        min-width: 325px;
+        width: 325px;
         transform: 0.2s ease;
     }
 
     .roundLinks{
         gap: 20px;
+        width: 30px
     }
 
     .link{
@@ -196,7 +197,8 @@ main{
 
     .menuButton{
         font-size: 25px;
-        top: 20px;
+        top: 0px;
+        left: 15px
     }
 
     .sideMenu {
