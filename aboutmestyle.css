@@ -5,13 +5,17 @@
 
 body{
     background: #232323;
+    
+}
+
+p{
+  margin-bottom: 50px;
 }
 
 body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-
 }
 
 video {
@@ -43,6 +47,22 @@ body img{
     border: solid 4px white;
 }
 
+#pEnd{
+  font-size: 20px;
+  margin-bottom: 25px;
+  padding-bottom: 30px;
+}
+
+#pFinal, #pSecond, #pFirst{
+  opacity: 0;
+  transition: 0.25s;
+}
+
+.highOpacity{
+  opacity: 1;
+  transition: 0.25s;
+}
+
 .menuButton{
     font-size: 50px;
     position: fixed;
@@ -72,7 +92,6 @@ body img{
   align-items: center;
   padding-top: 200px;
   transition: 0.2s ease;
-  border-radius: 0 20px 20px 0;
   z-index: 2; /* au-dessus du contenu */
 }
 
@@ -95,6 +114,7 @@ body img{
 @media screen and (max-width: 750px) {
     body{
         margin: 50px;
+        
     }
 
     video{

@@ -22,3 +22,28 @@ menuButton.addEventListener("click", () => {
     menuButton.style.transform = "rotate(180deg)";
   }
 });
+
+const pFinal = document.querySelector("#pFinal");
+const pSecond = document.querySelector("#pSecond");
+const pFirst = document.querySelector("#pFirst");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 60) {
+    pFirst.id = "highOpacity";
+    pFirst.style.transition = 1 + "s";
+  }
+});
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 120) {
+    pSecond.id = "highOpacity";
+    pSecond.style.transition = 1 + "s";
+  }
+});
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 200) {
+    pFinal.id = "highOpacity";
+    pFinal.style.transition = 1 + "s";
+  }
+});

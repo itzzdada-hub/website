@@ -19,7 +19,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow: hidden;
+
 }
 
 video {
@@ -99,7 +99,7 @@ video {
     border-radius: 30px;
     border: solid 3px black;
 
-    transition: transform 0.2s;
+    transition: transform 0.2s;  /* <<< ajoute cette ligne ici */
 }
 
 .moreLinksHover {
@@ -153,8 +153,7 @@ main{
   align-items: center;
   padding-top: 200px;
   transition: 0.2s ease;
-  border-radius: 0 20px 20px 0;
-  z-index: 2; /* au-dessus du contenu */
+  z-index: 2;
 }
 
 .sideMenu a {
@@ -175,32 +174,58 @@ main{
 
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 844px) {
     *{
-        font-size: 20px;
-    }
-
-    h1{
-        font-size: 30px;
+        font-size: 15px;
     }
 
     main {
-        min-width: 325px;
-        width: 325px;
+        min-width: 300px;
+        width: 300px;
         transform: 0.2s ease;
+        margin-top: 95px;
+        padding: 0 25px;
     }
+
+    .intro h1{
+    color: white;
+    font-size: 9vh;
+    margin: 0;
+}
 
     .roundLinks{
         gap: 20px;
+    }
+
+    .roundLinks img{
+        width: 65px;
     }
 
     .link{
         width: 85px;
     }
 
+    .discordServer, .fiverr{
+    font-size: 3vh;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    margin: 50px auto;
+    border-radius: 20px;
+    max-width: 275px;
+    cursor: pointer;
+    transition: 0.2s;
+    }
+
+    .moreLinks img{
+    transform: translateY(11px);
+    margin-left: 25px;
+    margin-top: -15px;
+    width: 45px;
+    }
+
     .menuButton{
-        font-size: 25px;
-        top: 0px;
+        font-size: 40px;
+        top: 20px;
     }
 
     .sideMenu {
@@ -216,6 +241,17 @@ main{
         padding-top: 200px;
         transition: 0.2s ease;
         z-index: 2; /* au-dessus du contenu */
+    }
+}
+
+
+@media screen and (max-width: 740px){
+    main {
+        min-width: 300px;
+        width: 300px;
+        transform: 0.2s ease;
+        margin-top: 95px;
+        padding: 0 10px;
     }
 }
 
