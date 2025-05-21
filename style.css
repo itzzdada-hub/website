@@ -99,7 +99,7 @@ video {
     border-radius: 30px;
     border: solid 3px black;
 
-    transition: transform 0.2s;  /* <<< ajoute cette ligne ici */
+    transition: transform 0.2s;
 }
 
 .moreLinksHover {
@@ -181,8 +181,8 @@ main{
     }
 
     main {
-        min-width: 400px;
-        width: 400px;
+        min-width: 350px;
+        width: 350px;
         transform: 0.2s ease;
     }
 
