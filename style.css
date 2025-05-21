@@ -181,7 +181,7 @@ main{
     }
 
     h1{
-        font-size: 5vh;
+        font-size: 3vh;
     }
 
     main {
@@ -192,7 +192,6 @@ main{
 
     .roundLinks{
         gap: 20px;
-        width: 30px
     }
 
     .link{
@@ -202,7 +201,7 @@ main{
     .menuButton{
         font-size: 25px;
         top: 0px;
-        left: 15px
+        left: 150px
     }
 
     .sideMenu {
