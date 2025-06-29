@@ -11,6 +11,7 @@
     letter-spacing: 2px;
 }
 
+
 body{
     background: #232323;
 }
@@ -38,8 +39,12 @@ video {
 
 .intro h1{
     color: white;
-    font-size: 12vh;
+    font-size: 15vh;
     margin: 0;
+}
+
+.intro h1:hover{
+    cursor: default;
 }
 
 .intro p{
@@ -62,7 +67,7 @@ video {
 
 .roundLinks img{
     border-radius: 100px;
-    border: solid 4px rgb(0, 0, 0);
+    border: solid 3px rgb(0, 0, 0);
     transition: 0.2s;
 }
 
@@ -198,7 +203,7 @@ main{
     }
 
     .roundLinks img{
-        width: 65px;
+        width: 50px;
     }
 
     .link{

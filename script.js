@@ -3,20 +3,21 @@ const roundLinks = document.querySelectorAll(".roundLinks img");
 roundLinks.forEach((link) => {
   link.addEventListener("mouseenter", () => {
     link.classList.add("roundLinksHover");
-    link.style.border = "solid 4px rgb(36, 36, 36)";
+    link.style.border = "solid 3px rgb(36, 36, 36)";
   });
 });
 
 roundLinks.forEach((link) => {
   link.addEventListener("mouseout", () => {
     link.classList.remove("roundLinksHover");
-    link.style.border = "solid 4px rgb(0, 0, 0)";
+    link.style.border = "solid 3px rgb(0, 0, 0)";
   });
 });
 
 const instagram = document.querySelector("#instagram");
 const youtube = document.querySelector("#youtube");
 const discord = document.querySelector("#discord");
+const soundcloud = document.querySelector("#soundcloud");
 
 instagram.addEventListener("click", () => {
   open("https://www.instagram.com/itzzdada_prod/");
@@ -28,6 +29,10 @@ youtube.addEventListener("click", () => {
 
 discord.addEventListener("click", () => {
   open("https://discord.gg/ZfXdn2R5");
+});
+
+soundcloud.addEventListener("click", () => {
+  open("https://on.soundcloud.com/TxYRvfM4f26lsY9ti5"); // ← Mets ton lien SoundCloud ici
 });
 
 const moreLinks = document.querySelectorAll(".discordServer, .fiverr");
