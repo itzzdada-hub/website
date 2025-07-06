@@ -92,7 +92,7 @@ body img{
   align-items: center;
   padding-top: 200px;
   transition: 0.2s ease;
-  z-index: 2; /* au-dessus du contenu */
+  z-index: 2;
 }
 
 .sideMenu a {
