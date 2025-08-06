@@ -18,6 +18,7 @@ const instagram = document.querySelector("#instagram");
 const youtube = document.querySelector("#youtube");
 const discord = document.querySelector("#discord");
 const soundcloud = document.querySelector("#soundcloud");
+const spotify = document.querySelector("#spotify");
 
 instagram.addEventListener("click", () => {
   open("https://www.instagram.com/itzzdada_prod/");
@@ -32,7 +33,13 @@ discord.addEventListener("click", () => {
 });
 
 soundcloud.addEventListener("click", () => {
-  open("https://on.soundcloud.com/TxYRvfM4f26lsY9ti5"); // ← Mets ton lien SoundCloud ici
+  open("https://on.soundcloud.com/TxYRvfM4f26lsY9ti5");
+});
+
+spotify.addEventListener("click", () => {
+  open(
+    "https://open.spotify.com/intl-fr/artist/51r82o1fYZxhpgURemz5wO?si=pn1ITR9hRCylVTn_1rGrfw"
+  );
 });
 
 const moreLinks = document.querySelectorAll(".discordServer, .fiverr");
