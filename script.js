@@ -29,7 +29,7 @@ youtube.addEventListener("click", () => {
 });
 
 discord.addEventListener("click", () => {
-  open("https://discord.gg/ZfXdn2R5");
+  open("https://discord.gg/7FATz9nakJ");
 });
 
 soundcloud.addEventListener("click", () => {

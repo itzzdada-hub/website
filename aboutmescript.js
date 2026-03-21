@@ -35,7 +35,7 @@ window.addEventListener("scroll", () => {
 });
 
 window.addEventListener("scroll", () => {
-  if (window.scrollY > 120) {
+  if (window.scrollY > 75) {
     pSecond.id = "highOpacity";
     pSecond.style.transition = 1 + "s";
   }

@@ -2,253 +2,483 @@
 <html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Achievements</title>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./images/pdpRound.png">
-    <style>
-        @font-face {
-            font-family: "Bebas";
-            src: url(./assets/BebasNeue-Regular.ttf);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achievements</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Bebas', sans-serif;
-            background: #2d2d2f;
-            color: #ffffff;
-            padding: 60px 20px;
-        }
+<style>
+@font-face {
+    font-family: "Bebas";
+    src: url(./assets/BebasNeue-Regular.ttf);
+}
 
-        h1 {
-            text-align: center;
-            font-size: 5rem;
-            margin-bottom: 60px;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .section {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            max-width: 1200px;
-            margin: auto;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .block {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            padding-bottom: 150px;
-        }
+/* BACK TO TOP */
+#backToTop {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: #555;
+    color: white;
+    font-size: 2rem;
+    padding: 15px 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+    transition: 0.3s;
+}
 
-        .block:nth-child(even) {
-            flex-direction: row-reverse;
-        }
+#backToTop:hover {
+    background: white;
+    color: black;
+    transform: scale(1.2);
+}
 
-        .block img {
-            width: 510px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(132, 132, 132, 0.4);
-            object-fit: cover;
-        }
+/* MENU LATÉRAL */
+.menuButton {
+    font-size: 50px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    transition: 0.3s;
+    cursor: pointer;
+    z-index: 1001;
+}
 
-        .text {
-            flex: 1;
-            font-size: 1.3rem;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-left: 3px solid #525252;
-            border-radius: 10px;
-            min-width: 210px;
-        }
+/* La flèche bouge quand menu ouvert */
+.menuButton.open {
+    transform: rotate(180deg);
+    left: 80px;
+}
 
-        .menuButton {
-            font-size: 50px;
-            position: fixed;
-            top: 0;
-            left: 10px;
-            transition: 0.2s;
-        }
+/* SIDE MENU */
+.sideMenu {
+    position: fixed;
+    top: 0;
+    left: -100px;
+    width: 70px;
+    height: 100%;
+    background-color: #2b2b2b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 200px;
+    transition: 0.3s ease;
+    z-index: 1000;
+}
 
-        .menuButtonHover {
-            font-size: 60px;
-            position: fixed;
-            top: 0;
-            left: 10px;
-            transition: 0.2;
-            cursor: pointer;
-        }
+.sideMenu a {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    margin: 30px 0;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.2s, transform 0.2s;
+}
 
-        .sideMenu {
-            position: fixed;
-            top: 0;
-            left: -100px;
-            width: 70px;
-            height: 100%;
-            background-color: #2b2b2b;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 200px;
-            transition: 0.2s ease;
-            z-index: 2;
-        }
+.sideMenu a:hover {
+    color: #bbbbbb;
+    transform: rotate(180deg) scale(1.1);
+}
 
-        .sideMenu a {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            margin: 30px 0;
-            color: white;
-            text-decoration: none;
-            font-size: 20px;
-            transition: color 0.2s, transform 0.2s;
-        }
+/* BODY */
+body {
+    font-family: 'Bebas', sans-serif;
+    background: #1f1f21;
+    color: white;
+    padding: 60px 20px;
+}
 
-        .sideMenu a:hover {
-            color: #bbbbbb;
-            transform: rotate(180deg) scale(1.1);
-            cursor: pointer;
-        }
+h1 {
+    text-align: center;
+    font-size: 5rem;
+    margin-bottom: 30px;
+}
 
-        #more {
-            font-size: 5vh;
-            text-align: center;
-            padding-top: 75px;
-            padding-bottom: 0;
-            margin-bottom: 5px
-        }
+/* NAV */
+.navButtons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 150px;
+    flex-wrap: wrap;
+}
 
-        #SpiderMan {
-            width: 350px;
-        }
+.navButtons a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.4rem;
+    padding: 10px 25px;
+    border: 2px solid #555;
+    border-radius: 10px;
+    transition: 0.25s;
+    background: rgba(255,255,255,0.05);
+}
 
-        @media (max-width: 768px) {
-            .block {
-                flex-direction: column !important;
-                text-align: center;
-            }
+.navButtons a:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+}
 
-            .block img {
-                width: 100%;
-            }
+/* TITRES */
+.section-title {
+    font-size: 2.5rem;
+    margin: 40px 0 20px;
+    text-align: center;
+    color: #ccc;
+}
 
-            .text {
-                border-left: none;
-                border-top: 5px solid #504f4c;
-            }
-        }
-    </style>
+/* BLOCS */
+.section {
+    max-width: 1200px;
+    margin: auto;
+    margin-bottom: 500px;
+}
+
+.block {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+}
+
+.block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.block img {
+    width: 500px;
+    border-radius: 15px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.5);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.block img:hover {
+    transform: scale(1.05);
+}
+
+/* TEXTE */
+.text {
+    flex: 1;
+    font-size: 1.2rem;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-left: 4px solid #666;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+/* LIGHTBOX */
+#lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+#lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    animation: zoom 0.3s ease;
+}
+
+@keyframes zoom {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+#close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+/* FOOTER */
+#more {
+    text-align: center;
+    margin-top: 80px;
+    font-size: 2rem;
+    color: #aaa;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    h1 { font-size: 3rem; }
+
+    .block {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .block img {
+        width: 100%;
+    }
+
+    .text {
+        border-left: none;
+        border-top: 4px solid #666;
+    }
+
+    .section {
+        margin-bottom: 120px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <h1>Achievements</h1>
+<!-- BOUTON MENU -->
+<div class="menuButton">&#8594;</div>
 
-    <div class="section">
+<!-- MENU LATÉRAL -->
+<div class="sideMenu">
+    <a href="./index.html">Home</a>
+    <a href="./flp.html">FLP's</a>
+    <a href="./aboutme.html">About me</a>
+    <a href="./achievements.html">Achievements</a>
+</div>
 
-        <!-- Bloc 1 : image à droite -->
-        <div class="block">
-            <div class="text">
-                <h2>Super Mario Galaxy 100%</h2>
-                <p><br>For me, this game is truly the definition of 'nostalgia.' It's a game that has aged well and I
-                    hope
-                    it will carry the childhood of many more people. <br> <br>The 100% was fun and not too complicated,
-                    I
-                    enjoyed
-                    it.</p>
-            </div>
-            <img src="./images/ach1.png" alt="Mario Galaxy Achievement">
-        </div>
+<!-- BACK TO TOP -->
+<div id="backToTop">&#8679;</div>
 
-        <!-- Bloc 2 : image à gauche -->
-        <div class="block">
-            <div class="text">
-                <h2>Super Mario Galaxy 2 100%</h2>
-                <p><br>The continuation of 1. was also really good and more complete, even though some levels were
-                    complicated. <br> <br> Getting the 100% was one of the most difficult challenges for me, especially
-                    the ultimate
-                    last level with 1hp..</p>
-            </div>
-            <img src="./images/ach2.png" alt="Achievement 2">
-        </div>
+<h1>Achievements</h1>
 
-        <!-- Bloc 3 : image à droite -->
-        <div class="block">
-            <div class="text">
-                <h2>Super Mario Odyssey 100%</h2>
-                <p><br>This game was really perfect from start to the end, I'm happy to have played it at its release on
-                    my
-                    Switch, it was really fun and varied. <br><br> Getting the 100% was really fun and complicated,
-                    especially the ultimate level on the moon, but it remained very fun..</p>
-            </div>
-            <img src="./images/ach3.jpg" alt="Achievement 3">
-        </div>
+<div class="navButtons">
+    <a href="#fromsoftware">FromSoftware</a>
+    <a href="#Mario">Mario</a>
+    <a href="#spiderman">Spider-Man</a>
+    <a href="#indie">Indie Games</a>
+</div>
 
-        <div class="block">
-            <div class="text">
-                <h2>Marvel's Spider-Man Remastered</h2>
-                <p><br>I played this game for the first time in September 2025. I was never really interested in
-                    Spider-Man, but this game changed my perspective. Thanks to it, I watched all the Spider-Man movies,
-                    including the ones with Miles. I watched everything and really enjoyed it all. I'm happy I started
-                    this game!<br><br> The 100% was rather long, but really fun; I really enjoyed doing everything in
-                    this game.</p>
-            </div>
-            <img src="./images/SpiderManRemastered1.png" alt="SpiderManRemastered1">
-            <img id="SpiderMan" src="./images/SpiderManRemastered2.png" alt="SpiderManRemastered1">
-        </div>
+<!-- FROMSOFTWARE -->
+<h2 class="section-title" id="fromsoftware">FromSoftware</h2>
+<div class="section">
 
-        <div class="block">
-            <div class="text">
-                <h2>Marvel's Spider-Man: Miles Morales</h2>
-                <p><br>After doing the first one, we had to do the next! This game was really good, I noticed a strong
-                    improvement in the flying movements, it was smoother and so much fun, even the graphics improved.
-                    Even though it was short, it was intense and perfect!<br><br> The 100% completion was short, I
-                    finished the whole game in a few days, it was super fun but short</p>
-            </div>
-            <img src="./images/milesMorales1.png" alt="SpiderManRemastered1">
-            <img id="SpiderMan" src="./images/milesMorales2.png" alt="SpiderManRemastered1">
-        </div>
+<div class="block">
+<div class="text">
+<h2>Elden Ring 100%</h2>
+<p>
+Elden Ring. My first FromSoftware game, so beautiful, perfect, difficult for the first time.. I would do anything to be able to play it for the first time again. Everyone should play Elden Ring at least once in their life even if the game is considered 'Difficult'. I was scared too, at first, but well, now it's one of my favorite games. (My favorite boss is Radagon by the way)<br><br>
+Doing 100% was long but very satisfying, I really enjoyed beating all the bosses in the game, I recommend it 10000%
+</p>
+</div>
+<img src="./images/eldenring.png">
+</div>
 
-        <div class="block">
-            <div class="text">
-                <h2>Marvel's Spider-Man 2</h2>
-                <p><br>This game was simply magnificent, I have nothing else to say. Really, everything has been
-                    improved, whether it's the characters, the graphics, the movements, honestly the game was
-                    incredible. <br> There are a lot of features that have been added and it really improved the
-                    game!<br><br>
-                    I thought getting 100% would take forever, but I actually managed it in ONE week (playing for
-                    several hours a day haha). Honestly, the side missions are so fun and interesting, I really enjoyed
-                    doing everything.</p>
-            </div>
-            <img src="./images/SpiderMan2.1.png" alt="SpiderManRemastered1">
-            <img id="SpiderMan" src="./images/SpiderMan2.2.png" alt="SpiderManRemastered1">
-        </div>
+<div class="block">
+<div class="text">
+<h2>Sekiro: Shadows Die Twice 100%</h2>
+<p>
+Sekiro can be scary at the beginning, but it is excellent, it even rivals Elden Ring thanks to its parry system (and this is just my opinion), the bosses are very good and the execution of shinobi adds something extra to this already perfect game.. Everyone should also play Sekiro. (My favorite boss is Genichiro by the way)<br><br>
+Doing 100% was complicated but good, I was able to discover all the endings and all the bosses. I can only recommend this game
+</p>
+</div>
+<img src="./images/sekiro.png">
+</div>
 
-    </div>
+</div>
 
-    <div class="menuButton">
-        &#8594;
-    </div>
+<!-- MARIO -->
+<h2 class="section-title" id="Mario">Mario</h2>
+<div class="section">
 
-    <div class="sideMenu">
-        <a href="./index.html">Home</a>
-        <a href="./flp.html">FLP's</a>
-        <a href="./aboutme.html">About me</a>
-        <a href="./achievements.html">Achievements</a>
-    </div>
+<div class="block">
+<div class="text">
+<h2>Super Mario Galaxy 100%</h2>
+<p>
+For me, this game is truly the definition of "nostalgia." It's a game that has aged well and I hope it will carry the childhood of many more people.<br><br>
+The 100% was fun and not too complicated, I enjoyed it.
+</p>
+</div>
+<img src="./images/ach1.png">
+</div>
 
-    <p id="more">More 100% soon..</p>
+<div class="block">
+<div class="text">
+<h2>Super Mario Galaxy 2 100%</h2>
+<p>
+The continuation of 1. was also really good and more complete, even though some levels were complicated.<br><br>
+Getting the 100% was one of the most difficult challenges for me, especially the ultimate last level with 1hp.
+</p>
+</div>
+<img src="./images/ach2.png">
+</div>
 
-    <script src="./achievements.js"></script>
+<div class="block">
+<div class="text">
+<h2>Super Mario Odyssey 100%</h2>
+<p>
+This game was really perfect from start to the end, I'm happy to have played it at its release on my Switch, it was really fun and varied.<br><br>
+Getting the 100% was really fun and complicated, especially the ultimate level on the moon, but it remained very fun.
+</p>
+</div>
+<img src="./images/ach3.jpg">
+</div>
+
+</div>
+
+<!-- SPIDERMAN -->
+<h2 class="section-title" id="spiderman">Spider-Man</h2>
+<div class="section">
+
+<div class="block">
+<div class="text">
+<h2>Marvel's Spider-Man Remastered</h2>
+<p>
+I played this game for the first time in September 2025. I was never really interested in Spider-Man, but this game changed my perspective.<br><br>
+Thanks to it, I watched all the Spider-Man movies, including the ones with Miles. I watched everything and really enjoyed it all. I'm happy I started this game!<br><br>
+The 100% was rather long, but really fun; I really enjoyed doing everything in this game.
+</p>
+</div>
+<img src="./images/SpiderManRemastered1.png">
+</div>
+
+<div class="block">
+<div class="text">
+<h2>Marvel's Spider-Man: Miles Morales</h2>
+<p>
+After doing the first one, we had to do the next! This game was really good, I noticed a strong improvement in the flying movements, it was smoother and so much fun, even the graphics improved.<br><br>
+Even though it was short, it was intense and perfect!<br><br>
+The 100% completion was short, I finished the whole game in a few days, it was super fun but short.
+</p>
+</div>
+<img src="./images/milesMorales1.png">
+</div>
+
+<div class="block">
+<div class="text">
+<h2>Marvel's Spider-Man 2</h2>
+<p>
+This game was simply magnificent, I have nothing else to say. Really, everything has been improved, whether it's the characters, the graphics, the movements, honestly the game was incredible.<br><br>
+There are a lot of features that have been added and it really improved the game!<br><br>
+I thought getting 100% would take forever, but I actually managed it in ONE week (playing for several hours a day haha). Honestly, the side missions are so fun and interesting, I really enjoyed doing everything.
+</p>
+</div>
+<img src="./images/SpiderMan2.1.png">
+</div>
+
+</div>
+
+<!-- INDIE -->
+<h2 class="section-title" id="indie">Indie Games</h2>
+<div class="section">
+
+<div class="block">
+<div class="text">
+<h2>Supraland</h2>
+<p>
+This game is simply part of my top 3, I really liked everything in this game. There are lots of funny references, the character control is perfect, and the story is interesting.<br><br>
+I have so many things to say about this game because I liked it so much.<br><br>
+The 100% was very good to do, even if you need the DLC to be able to get the 100%. The challenges are fun and interesting, I recommend this game 300%.
+</p>
+</div>
+<img src="./images/SUPRALAND2.png">
+</div>
+
+<div class="block">
+<div class="text">
+<h2>Hello Neighbor</h2>
+<p>
+Hello Neighbor is the game with the most interesting lore in my opinion. I have played all the Hello Neighbor games, but nothing is better than the original; this game is perfect.<br><br>
+The 100% was chill, I found success with the golden apple rather funny even though you had to wait for hours and hours.
+</p>
+</div>
+<img src="./images/HELLONEIGHBOR.png">
+</div>
+
+<div class="block">
+<div class="text">
+<h2>People Playground</h2>
+<p>
+People Playground is the best sandbox game where you can go wild 100%, thanks to the modders for making the game even better<br><br>
+Getting 100% was good, even if killing 1M people is a bit long haha. But doing the achievements helps us learn even more things about the game and that's very good
+</p>
+</div>
+<img src="./images/peopleplayground.png">
+</div>
+
+</div>
+
+<p id="more">More 100% soon...</p>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+    <span id="close">&times;</span>
+    <img id="lightbox-img">
+</div>
+
+<script>
+/* LIGHTBOX */
+const images = document.querySelectorAll(".block img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const close = document.getElementById("close");
+
+images.forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+    });
+});
+
+close.addEventListener("click", () => {
+    lightbox.style.display = "none";
+});
+
+lightbox.addEventListener("click", (e) => {
+    if (e.target !== lightboxImg) {
+        lightbox.style.display = "none";
+    }
+});
+
+/* BACK TO TOP */
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+    backToTop.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* MENU LATÉRAL */
+const menuButton = document.querySelector(".menuButton");
+const sideMenu = document.querySelector(".sideMenu");
+
+menuButton.addEventListener("click", () => {
+    const isOpen = sideMenu.style.left === "0px";
+    sideMenu.style.left = isOpen ? "-100px" : "0px";
+    menuButton.classList.toggle("open", !isOpen);
+});
+</script>
 
 </body>
-
 </html>
