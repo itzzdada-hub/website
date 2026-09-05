@@ -21,7 +21,7 @@ const soundcloud = document.querySelector("#soundcloud");
 const spotify = document.querySelector("#spotify");
 
 instagram.addEventListener("click", () => {
-  open("https://www.instagram.com/itzzdada.mp3?igsh=MXRia2pzOWlrOHF4Mw==");
+  open("https://www.instagram.com/dario_vro?igsi=YXF1ODYyYnRjNWFj");
 });
 
 youtube.addEventListener("click", () => {
